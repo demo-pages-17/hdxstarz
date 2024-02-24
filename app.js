@@ -4,6 +4,11 @@ const searchButton = document.getElementById('searchButton');
 const imageContainer = document.getElementById('image-grid');
 let imageURLs = [];
 
+// To Stop the page reloading
+window.addEventListener('beforeunload' , function(e) {
+    e.preventDefault();
+    e.returnValue = '';
+})
 
 searchButton.addEventListener('click', () => {
     APICall(pornStarName, category);
