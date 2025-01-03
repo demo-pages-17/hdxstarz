@@ -2,6 +2,7 @@ const pornStarName = document.getElementById('name');
 const category = document.getElementById('category');
 const searchButton = document.getElementById('searchButton');
 const imageContainer = document.getElementById('image-grid');
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 let imageURLs = [];
 
 // To Stop the page reloading
@@ -35,6 +36,7 @@ async function APICall(pornStarName, category) {
 }
 
 async function fetchImageURLs(result) {
+    // JSON format in which data is coming
     /* demo : {
         "result" : [ 
                 {
@@ -70,5 +72,18 @@ function displayImages() {
     })
 }
 
+window.onscroll = function () {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    scrollToTopBtn.style.display = "block";
+  } else {
+    scrollToTopBtn.style.display = "none";
+  }
+};
 
+scrollToTopBtn.addEventListener("click", function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
 
